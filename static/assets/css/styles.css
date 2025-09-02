@@ -1,9 +1,294 @@
-.carousel img {
-    width: 100%;
-    height: 700px;
+<style>
+/* Custom CSS for beautiful post cards */
+.blog-posts .blog-post {
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
 }
 
-.blog-posts .blog-post img,
-.blog-post img {
-    height: 300px;
+.blog-posts .blog-post:hover {
+    transform: translateY(-5px);
 }
+
+.blog-post .card-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.blog-post .card-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.blog-post .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-post:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.blog-post .card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-post .category-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.blog-post .post-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    color: #2c3e50;
+}
+
+.blog-post .post-excerpt {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.blog-post .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.blog-post .post-date {
+    color: #3498db;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.blog-post .like-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+    color: #e74c3c;
+}
+
+.blog-post .like-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Sidebar styles */
+.sidebar-item.recent-posts {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.sidebar-heading h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+    color: #2c3e50;
+}
+
+.sidebar-item .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item .content ul li {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.sidebar-item .content ul li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.sidebar-item .content ul li img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+}
+
+.sidebar-item .content ul li a h5 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    transition: color 0.2s ease;
+}
+
+.sidebar-item .content ul li a:hover h5 {
+    color: #3498db;
+}
+
+.sidebar-item .content ul li span {
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .blog-post .card-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-post .card-image {
+        height: 180px;
+    }
+    
+    .blog-post .card-content {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .blog-post .card-image {
+        height: 160px;
+    }
+    
+    .blog-post .post-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Target all content inside the main blog container */
+.blog-content {
+    font-family: 'Georgia', serif; /* Classic, readable serif font */
+    font-size: 1.125rem; /* 18px - ideal for body text */
+    line-height: 1.7; /* More space between lines for better readability */
+    color: #333; /* Soft black instead of pure #000 for less eye strain */
+    max-width: 100%; /* Ensures it doesn't overflow on mobile */
+}
+
+/* Headings */
+.blog-content h1 {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 2.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.2;
+}
+
+.blog-content h2 {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 2rem;
+    margin-top: 2.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    color: #222;
+    border-bottom: 1px solid #eee; /* A subtle line under H2s */
+    padding-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Paragraphs */
+.blog-content p {
+    margin-bottom: 1.5rem; /* Adds comfortable space between paragraphs */
+    text-align: justify; /* Creates a clean, aligned edge on both sides */
+}
+
+/* Links */
+.blog-content a {
+    color: #1a73e8; /* A standard, pleasant blue */
+    text-decoration: underline;
+    text-underline-offset: 2px; /* Adds a little space between text and underline */
+}
+.blog-content a:hover {
+    color: #0d47a1; /* A darker blue on hover */
+}
+
+/* Images */
+.blog-content img {
+    display: block; /* Removes bottom space under images */
+    max-width: 100%; /* Makes images responsive (scale down on mobile) */
+    height: auto; /* Maintains aspect ratio */
+    margin: 2rem auto; /* Centers images and adds space above/below */
+    border-radius: 8px; /* Optional: slight rounding of corners */
+}
+
+/* Lists */
+.blog-content ul, .blog-content ol {
+    margin: 1.5rem 0; /* Space above and below the list */
+    padding-left: 2rem; /* Proper indentation for list items */
+}
+
+.blog-content li {
+    margin-bottom: 0.7rem; /* Space between list items */
+    line-height: 1.6;
+}
+
+/* Blockquotes (for quotes or highlights) */
+.blog-content blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #ddd;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Code Snippets */
+.blog-content code {
+    font-family: 'Monaco', 'Courier New', monospace;
+    background-color: #f4f4f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.blog-content pre {
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 5px;
+    overflow-x: auto; /* Adds a scrollbar if code is too long */
+    margin: 1.5rem 0;
+}
+.blog-content pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+</style>

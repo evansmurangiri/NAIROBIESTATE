@@ -1,78 +1,323 @@
-
 <style>
+  /* Footer Styles */
+  footer {
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 100%);
+    color: #fff;
+    padding: 60px 0 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  }
+  
+  .footer-content {
+    position: relative;
+    z-index: 2;
+  }
+  
   h4 {
     text-align: left;
-    color: #dfdada;
+    color: #fff;
     letter-spacing: 1px;
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 12px;
+    text-transform: uppercase;
   }
-
+  
+  h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  }
+  
   li {
     text-decoration: none;
     text-align: left;
+    margin-bottom: 12px;
+    list-style: none;
   }
-
+  
   li a {
-    color: rgb(153, 147, 147);
+    color: #b8c2cc;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 0;
+    display: inline-block;
+    font-size: 15px;
   }
-
+  
   li a:hover {
-    color: orange;
+    color: #ff7e5f;
+    padding-left: 8px;
   }
-
-  @media screen and (max-width:600px) {
-
-    h4,
-    li {
+  
+  li a::before {
+    content: '→';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #ff7e5f;
+  }
+  
+  li a:hover::before {
+    opacity: 1;
+    left: -12px;
+  }
+  
+  /* Newsletter Section */
+  .newsletter-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .newsletter-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .newsletter-text {
+    color: #b8c2cc;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .newsletter-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-input:focus {
+    outline: none;
+    border-color: rgba(255, 126, 95, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+  }
+  
+  .newsletter-input::placeholder {
+    color: #8a94a6;
+  }
+  
+  .newsletter-btn {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .newsletter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 126, 95, 0.3);
+  }
+  
+  /* Social Media Icons */
+  .social-section {
+    margin-top: 30px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .social-icon:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    box-shadow: 0 5px 15px rgba(255, 126, 95, 0.3);
+  }
+  
+  /* Copyright Section */
+  .copyright {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #8a94a6;
+    font-size: 14px;
+  }
+  
+  .copyright a {
+    color: #ff7e5f;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .copyright a:hover {
+    color: #feb47b;
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+    
+    .newsletter-btn {
+      width: 100%;
+    }
+    
+    h4, li {
       text-align: center;
+    }
+    
+    h4::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .social-icons {
+      justify-content: center;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    footer {
+      padding: 40px 0 20px;
+    }
+    
+    .newsletter-section {
+      padding: 20px;
     }
   }
 </style>
 
 <footer>
-  <div class="container">
+  <div class="container footer-content">
+    <!-- Newsletter Subscription -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="newsletter-section">
+          <h3 class="newsletter-title">Stay Updated with Our Newsletter</h3>
+          <p class="newsletter-text">Subscribe to receive the latest property updates, exclusive offers, and real estate insights directly to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <h4 class="text-light">SERVICE</h4>
+        <h4>SERVICES</h4>
         <ul>
-          <li><a href="#">Shipping & Returns</a></li>
-          <li><a href="#">Size Guide</a></li>
+           <li><a href="{% url 'blog' %}">Stories</a></li>
+          <li><a href="#">Contact Support</a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <h4 class="text-light">ACCOUNT</h4>
+        <h4>ACCOUNT</h4>
         <ul>
           <li><a href="{% url 'signin' %}">Login</a></li>
           <li><a href="{% url 'signup' %}">Signup</a></li>
+          
         </ul>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <h4 class="text-light">INFORMATION</h4>
+        <h4>INFORMATION</h4>
         <ul>
           <li><a href="{% url 'blog' %}">Our Story</a></li>
-          <li><a href="#">Find a stocklist</a></li>
+        
         </ul>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <h4 class="text-light">CONNECT</h4>
-        <ul>
+        <h4>CONNECT</h4>
+        <!-- <ul>
           <li><a href="https://www.linkedin.com/in/keerti-vishwkarma-8ba754243/">Facebook</a></li>
           <li><a href="https://www.linkedin.com/in/keerti-vishwkarma-8ba754243/">Instagram</a></li>
-        </ul>
+          <li><a href="https://www.linkedin.com/in/keerti-vishwkarma-8ba754243/">Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/keerti-vishwkarma-8ba754243/">LinkedIn</a></li>
+        </ul> -->
+        
+        <div class="social-section">
+          <div class="social-icons">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
 
   <div class="container mt-5">
     <div class="row">
       <div class="col-lg-12">
-        <div class="p-3">
-          <p>Developed with 💖 by <a href="https://www.linkedin.com/in/keerti-vishwkarma-8ba754243/">Keerti</a> <br>
-            &copy; Copyright 2023 | All Rights Reserved
+        <div class="copyright">
+          
+            &copy; Copyright 2025 | All Rights Reserved
+          </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
