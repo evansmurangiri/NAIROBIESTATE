@@ -13,7 +13,7 @@ django-js-asset==3.1.2
 django-rest-framework==0.1.0
 django-taggit==6.1.0
 djangorestframework==3.16.0
-gunicorn==24.0.0
+gunicorn==23.0.0  # <- CHANGED FROM 24.0.0 to 23.0.0
 idna==3.10
 pillow==11.3.0
 PyMySQL==1.1.2
